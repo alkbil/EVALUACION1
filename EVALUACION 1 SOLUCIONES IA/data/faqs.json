@@ -1,0 +1,64 @@
+{
+  "faqs_pasteleria": [
+    {
+      "pregunta": "¿Cómo me registro para obtener descuentos?",
+      "respuesta": "Debes registrarte en nuestra página web pasteleria1000sabores.cl con tus datos personales. Los descuentos se activan automáticamente después de verificar tu información (edad para mayores de 50 años o correo institucional para estudiantes Duoc).",
+      "categoria": "descuentos",
+      "importancia": "alta"
+    },
+    {
+      "pregunta": "¿Qué métodos de pago aceptan?",
+      "respuesta": "Aceptamos tarjetas de crédito (hasta 6 cuotas sin interés), tarjetas de débito, transferencia bancaria, PayPal y efectivo (solo para retiro en tienda).",
+      "categoria": "pagos",
+      "importancia": "alta"
+    },
+    {
+      "pregunta": "¿Hacen envíos a todo Chile?",
+      "respuesta": "Sí, entregamos en todo Chile continental. Los costos y tiempos varían según la ubicación: Región Metropolitana $5.000 (1-3 días), regiones $7.000-$15.000 (3-7 días). Envío gratis en compras sobre $80.000.",
+      "categoria": "envios",
+      "importancia": "alta"
+    },
+    {
+      "pregunta": "¿Puedo personalizar mi torta?",
+      "respuesta": "¡Por supuesto! Todas nuestras tortas son personalizables. Puedes agregar mensajes especiales, fotos comestibles, decoraciones temáticas o colores específicos. La personalización básica está incluida, diseños complejos pueden tener costo adicional.",
+      "categoria": "personalizacion",
+      "importancia": "media"
+    },
+    {
+      "pregunta": "¿Tienen productos para dietas especiales?",
+      "respuesta": "Sí, ofrecemos opciones para diferentes necesidades: tortas sin azúcar (endulzadas naturalmente), productos sin gluten (hechos con harinas alternativas) y opciones veganas (sin ingredientes de origen animal).",
+      "categoria": "productos_especiales",
+      "importancia": "media"
+    },
+    {
+      "pregunta": "¿Cuánto tiempo de anticipación debo pedir?",
+      "respuesta": "Recomendamos 48 horas de anticipación para tortas estándar y 72 horas para tortas personalizadas complejas. Para pedidos urgentes (menos de 24 horas) aplica un recargo del 20%.",
+      "categoria": "tiempos",
+      "importancia": "media"
+    },
+    {
+      "pregunta": "¿Ofrecen muestras o degustaciones?",
+      "respuesta": "Sí, puedes agendar una cita para degustación en nuestra pastelería. Ofrecemos muestras de nuestros sabores más populares. Ideal para eventos grandes como bodas o cumpleaños corporativos.",
+      "categoria": "degustaciones",
+      "importancia": "baja"
+    },
+    {
+      "pregunta": "¿Qué hago si mi producto llega dañado?",
+      "respuesta": "Contáctanos dentro de las 24 horas posteriores a la entrega al +56 9 1234 5678. Tomaremos fotos del daño y coordinaremos el reemplazo inmediato o la devolución total del dinero.",
+      "categoria": "garantia",
+      "importancia": "alta"
+    },
+    {
+      "pregunta": "¿Puedo modificar o cancelar mi pedido?",
+      "respuesta": "Las modificaciones son posibles hasta 12 horas antes de la entrega. Las cancelaciones con reembolso completo deben hacerse con 24 horas de anticipación. Cancelaciones con menos de 12 horas tienen retención del 30%.",
+      "categoria": "modificaciones",
+      "importancia": "media"
+    },
+    {
+      "pregunta": "¿Tienen opciones para celíacos?",
+      "respuesta": "Sí, tenemos una línea especial de productos sin gluten certificados. Incluyen tortas, cupcakes y galletas. Todos se preparan en área separada para evitar contaminación cruzada.",
+      "categoria": "alergenos",
+      "importancia": "media"
+    }
+  ]
+}
