@@ -1,0 +1,113 @@
+{
+  "pasteleria_1000_sabores": {
+    "informacion_general": {
+      "nombre": "Pastelería 1000 Sabores",
+      "anios_experiencia": 50,
+      "reconocimientos": ["Récord Guinness 1995 - Torta más grande del mundo"],
+      "mision": "Ofrecer una experiencia dulce y memorable a nuestros clientes con productos de repostería de alta calidad",
+      "vision": "Convertirnos en la tienda online líder de productos de repostería en Chile"
+    },
+    
+    "categorias": [
+      {
+        "nombre": "Tortas Cuadradas",
+        "descripcion": "Tortas en forma cuadrada, ideales para eventos formales y celebraciones",
+        "productos": [
+          {
+            "codigo": "TC001",
+            "nombre": "Torta Cuadrada de Chocolate",
+            "precio": 45000,
+            "descripcion": "Deliciosa torta de chocolate con capas de ganache y un toque de avellanas",
+            "personalizable": true,
+            "ingredientes_principales": ["chocolate premium", "ganache", "avellanas"],
+            "tiempo_preparacion": "24-48 horas"
+          },
+          {
+            "codigo": "TC002",
+            "nombre": "Torta Cuadrada de Frutas",
+            "precio": 50000,
+            "descripcion": "Mezcla de frutas frescas y crema chantilly sobre bizcocho de vainilla",
+            "personalizable": true,
+            "ingredientes_principales": ["frutas frescas de temporada", "crema chantilly", "vainilla"],
+            "tiempo_preparacion": "24-48 horas"
+          }
+        ]
+      },
+      {
+        "nombre": "Tortas Circulares", 
+        "descripcion": "Tortas tradicionales circulares para todo tipo de ocasiones",
+        "productos": [
+          {
+            "codigo": "TT001",
+            "nombre": "Torta Circular de Vainilla",
+            "precio": 40000,
+            "descripcion": "Bizcocho de vainilla clásico con crema pastelera y glaseado dulce",
+            "personalizable": true,
+            "ingredientes_principales": ["vainilla natural", "crema pastelera", "glaseado"],
+            "tiempo_preparacion": "24 horas"
+          }
+        ]
+      },
+      {
+        "nombre": "Productos Especiales",
+        "descripcion": "Opciones para dietas especiales y necesidades específicas",
+        "productos": [
+          {
+            "codigo": "PSA001",
+            "nombre": "Torta Sin Azúcar de Naranja",
+            "precio": 48000,
+            "descripcion": "Torta ligera endulzada naturalmente, ideal para opciones saludables",
+            "personalizable": true,
+            "ingredientes_principales": ["naranja natural", "endulzante natural", "harina integral"],
+            "categoria_especial": "sin azúcar"
+          },
+          {
+            "codigo": "PV001", 
+            "nombre": "Torta Vegana de Chocolate",
+            "precio": 50000,
+            "descripcion": "Torta de chocolate hecha sin productos de origen animal",
+            "personalizable": true,
+            "ingredientes_principales": ["chocolate vegano", "leche vegetal", "harina"],
+            "categoria_especial": "vegano"
+          }
+        ]
+      }
+    ],
+    
+    "politicas_comerciales": {
+      "descuentos": [
+        {
+          "nombre": "Mayores de 50 años",
+          "valor": "50%",
+          "requisitos": ["Registro en página web", "Verificación de edad"],
+          "aplicacion": "Todos los productos"
+        },
+        {
+          "nombre": "Código FELICES50", 
+          "valor": "10% de por vida",
+          "requisitos": ["Registro con código FELICES50"],
+          "aplicacion": "Todas las compras"
+        },
+        {
+          "nombre": "Estudiantes Duoc",
+          "valor": "Torta gratis en cumpleaños",
+          "requisitos": ["Registro con correo @duoc.cl", "Verificación en cumpleaños"],
+          "aplicacion": "Torta de cumpleaños básica"
+        }
+      ],
+      
+      "envios": {
+        "cobertura": "Todo Chile",
+        "tiempo_entrega": "3-7 días hábiles",
+        "costo": "Variable según ubicación",
+        "seguimiento": "Tiempo real disponible"
+      },
+      
+      "personalizacion": {
+        "disponible": true,
+        "opciones": ["Mensajes especiales", "Decoraciones temáticas", "Fotos comestibles"],
+        "tiempo_extra": "24 horas adicionales"
+      }
+    }
+  }
+}
