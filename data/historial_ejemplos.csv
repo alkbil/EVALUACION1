@@ -1,0 +1,7 @@
+id_pedido,id_cliente,fecha_pedido,productos,total,estado,metodo_pago,fecha_entrega
+PED001,CLI001,2024-03-20,"TC001-Torta Chocolate Premium",45000,entregado,tarjeta_credito,2024-03-22
+PED002,CLI002,2024-03-15,"TT001-Torta Vainilla Clásica",0,entregado,gratis_cumpleaños,2024-03-17
+PED003,CLI003,2024-03-18,"TC002-Torta Frutas Estación,PI001-Mousse Chocolate",55000,preparacion,transferencia,2024-03-21
+PED004,CLI004,2024-03-25,"PV001-Torta Vegana Chocolate",25000,entregado,efectivo,2024-03-27
+PED005,CLI005,2024-03-22,"TC001-Torta Chocolate Premium,PI002-Tiramisú",49500,en_camino,paypal,2024-03-24
+PED006,CLI001,2024-03-25,"TT001-Torta Vainilla Clásica",20000,confirmado,tarjeta_debito,2024-03-28
