@@ -8,7 +8,9 @@ import pandas as pd
 import plotly.graph_objects as go
 import plotly.express as px
 from datetime import datetime
+from pathlib import Path
 import os
+import json
 from dotenv import load_dotenv
 import time
 
@@ -87,6 +89,36 @@ st.markdown("""
     }
 </style>
 """, unsafe_allow_html=True)
+
+
+# ============= FUNCIONES AUXILIARES PARA GUARDAR CONSULTAS =============
+
+def save_query_to_history(query: str, customer_id: str = None):
+    """Guarda una consulta en el historial"""
+    queries_file = Path("./data/queries_history.json")
+    queries_file.parent.mkdir(parents=True, exist_ok=True)
+    
+    try:
+        # Cargar historial existente
+        if queries_file.exists():
+            with open(queries_file, 'r', encoding='utf-8') as f:
+                queries = json.load(f)
+        else:
+            queries = []
+        
+        # Agregar nueva consulta
+        query_entry = {
+            "timestamp": datetime.now().isoformat(),
+            "query": query,
+            "customer_id": customer_id or "anonymous"
+        }
+        queries.append(query_entry)
+        
+        # Guardar
+        with open(queries_file, 'w', encoding='utf-8') as f:
+            json.dump(queries, f, ensure_ascii=False, indent=2)
+    except Exception as e:
+        st.warning(f"⚠️ Error guardando consulta: {e}")
 
 
 class IntelligentPasteleriaApp:
@@ -501,61 +533,132 @@ def main():
                     render_thinking_process(result["execution_trace"])
     
     # Input de consulta
-    query = st.chat_input("💬 Escribe tu consulta...")
+    query = st.chat_input("💬 Escribe tu consulta... (ej: /error para simular error)")
     
     if query:
-        # Agregar mensaje del usuario
-        st.session_state.messages.append({
-            "role": "user",
-            "content": query
-        })
-        
-        # Mostrar mensaje del usuario
-        with st.chat_message("user"):
-            st.markdown(query)
-        
-        # Procesar con el agente
-        with st.chat_message("assistant"):
-            with st.status("🤖 Agente pensando...", expanded=True) as status:
-                st.write("🔄 Analizando consulta...")
-                time.sleep(0.5)
-                
-                st.write("🛠️ Seleccionando herramientas...")
-                time.sleep(0.5)
-                
-                st.write("💭 Razonando y ejecutando...")
-                
-                # Ejecutar agente
-                result = app.process_query(
-                    query,
-                    customer_id=st.session_state.customer_id
-                )
-                
-                status.update(label="✅ Respuesta generada", state="complete")
+        # Verificar comandos especiales
+        if query.strip().lower() == "/error":
+            # Simular un error para testing - registrarlo en el logger
+            st.session_state.messages.append({
+                "role": "user",
+                "content": query
+            })
             
-            # Mostrar respuesta
-            answer = result.get("answer", "")
-            st.markdown(answer)
+            with st.chat_message("user"):
+                st.markdown(f"```\n{query}\n```")
             
-            # Herramientas usadas
-            if result.get("tools_used"):
-                render_tools_used(result["tools_used"])
+            # Registrar el error en el sistema de logging
+            error_msg = "ValueError: División por cero en cálculo de descuento"
+            error_trace = """  File 'discount_calculator.py', line 142, in calculate
+    percentage = amount / total_items  # Error aquí"""
             
-            # Métricas
-            render_metrics(result)
+            try:
+                # Si hay logger, escribir en él
+                if app.logger:
+                    app.logger.logger.error(f"ERROR | {error_msg}\nTraceback:\n{error_trace}")
+                
+                # Mostrar en la UI
+                with st.chat_message("assistant"):
+                    st.error("❌ **ERROR SIMULADO PARA TESTING**")
+                    st.markdown(f"""
+                    **Detalles del error:**
+                    - **Tipo**: ValueError
+                    - **Módulo**: discount_calculator.py
+                    - **Línea**: 142
+                    - **Mensaje**: {error_msg}
+                    
+                    ```python
+                    Traceback (most recent call last):
+                      File "discount_calculator.py", line 142, in calculate
+                        percentage = amount / total_items  # Error aquí
+                    ValueError: {error_msg}
+                    ```
+                    
+                    **✅ Este error ha sido registrado en los logs del sistema.**
+                    **Actualiza el dashboard para ver el error reflejado.**
+                    """)
+                    
+                    st.session_state.messages.append({
+                        "role": "assistant",
+                        "content": f"ERROR: {error_msg}"
+                    })
+            except Exception as e:
+                st.error(f"Error al registrar el fallo: {e}")
             
-            # Proceso de razonamiento
-            if result.get("execution_trace"):
-                render_thinking_process(result["execution_trace"])
+            st.rerun()
         
-        # Agregar respuesta al historial
-        st.session_state.messages.append({
-            "role": "assistant",
-            "content": answer,
-            "result": result
-        })
+        elif query.strip().lower() == "/help":
+            # Mostrar comandos disponibles
+            st.info("""
+            **Comandos disponibles:**
+            - `/error` - Simula un error para ver cómo se captura en el dashboard
+            - `/help` - Muestra esta ayuda
+            - `/reset` - Limpia el historial de mensajes
+            """)
         
-        st.rerun()
+        elif query.strip().lower() == "/reset":
+            # Limpiar historial
+            st.session_state.messages = []
+            st.success("✅ Historial limpiado")
+            st.rerun()
+        
+        else:
+            # Consulta normal
+            # GUARDAR CONSULTA EN HISTORIAL
+            save_query_to_history(query, st.session_state.customer_id)
+            
+            # Agregar mensaje del usuario
+            st.session_state.messages.append({
+                "role": "user",
+                "content": query
+            })
+            
+            # Mostrar mensaje del usuario
+            with st.chat_message("user"):
+                st.markdown(query)
+            
+            # Procesar con el agente
+            with st.chat_message("assistant"):
+                with st.status("🤖 Agente pensando...", expanded=True) as status:
+                    st.write("🔄 Analizando consulta...")
+                    time.sleep(0.5)
+                    
+                    st.write("🛠️ Seleccionando herramientas...")
+                    time.sleep(0.5)
+                    
+                    st.write("💭 Razonando y ejecutando...")
+                    
+                    # Ejecutar agente
+                    result = app.process_query(
+                        query,
+                        customer_id=st.session_state.customer_id
+                    )
+                    
+                    status.update(label="✅ Respuesta generada", state="complete")
+                
+                # Mostrar respuesta
+                answer = result.get("answer", "")
+                st.markdown(answer)
+                
+                # Herramientas usadas
+                if result.get("tools_used"):
+                    render_tools_used(result["tools_used"])
+                
+                # Métricas
+                render_metrics(result)
+                
+                # Proceso de razonamiento
+                if result.get("execution_trace"):
+                    render_thinking_process(result["execution_trace"])
+            
+            # Agregar respuesta al historial
+            st.session_state.messages.append({
+                "role": "assistant",
+                "content": answer,
+                "result": result
+            })
+            
+            st.rerun()
     
     # Sección de consultas rápidas
     st.markdown("---")

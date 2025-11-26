@@ -22,6 +22,10 @@ pyyaml>=6.0
 tiktoken>=0.5.2
 colorama>=0.4.6
 
+# EP3: Observabilidad y Monitoreo
+psutil>=5.9.0
+# plotly already in requirements
+
 # Testing
 pytest>=7.4.0
 pytest-cov>=4.1.0
