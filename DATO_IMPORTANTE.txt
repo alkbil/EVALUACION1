@@ -1,3 +1,0 @@
-DATO IMPORTANTE PARA QUE FUNCIONE:
-
-python -m streamlit run app.py

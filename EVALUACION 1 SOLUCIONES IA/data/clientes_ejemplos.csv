@@ -1,7 +1,0 @@
-id_cliente,nombre,email,edad,telefono,tipo_cliente,fecha_registro,ultima_compra
-CLI001,Ana González,ana.gonzalez@email.com,52,+56912345678,mayor_50,2024-01-15,2024-03-20
-CLI002,Carlos López,carlos.lopez@duoc.cl,21,+56987654321,estudiante_duoc,2024-02-10,2024-03-15
-CLI003,María Silva,maria.silva@email.com,45,+56911223344,regular,2024-01-20,2024-03-18
-CLI004,Rodrigo Martínez,rodrigo.martinez@email.com,58,+56944556677,mayor_50,2024-03-01,2024-03-25
-CLI005,Fernanda Vargas,fernanda.vargas@duoc.cl,19,+56999887766,estudiante_duoc,2024-02-28,2024-03-22
-CLI006,Jorge Díaz,jorge.diaz@email.com,35,+56955443322,regular,2024-01-30,2024-03-19
